@@ -3,6 +3,7 @@
 import { createStandardNavigator } from 'standard-navigation';
 
 import type { StandardNavigatorContentProps } from '../../../standard-navigation/types';
+import { useNonStackAnchorWarning } from '../../../standard-navigation/useNonStackAnchorWarning';
 import { usePreloadPlaceholderRoutes } from '../../../standard-navigation/usePreloadPlaceholderRoutes';
 import { useVisibleTabsWithRedirect } from '../../../standard-navigation/useVisibleTabsWithRedirect';
 import type { DrawerNavigationState, DrawerRouterOptions, ParamListBase } from '../../native';
@@ -53,6 +54,7 @@ function DrawerNavigatorContent({
   drawerContent,
   detachInactiveScreens,
 }: ContentArgs) {
+  useNonStackAnchorWarning();
   const { visibleRoutes, focusedIndex, focusedFallbackRoute } = useVisibleTabsWithRedirect({
     routes: drawerState.routes,
     routeNames: drawerState.routeNames,

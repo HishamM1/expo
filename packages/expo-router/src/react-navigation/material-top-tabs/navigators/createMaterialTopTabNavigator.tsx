@@ -3,6 +3,7 @@
 import { createStandardNavigator } from 'standard-navigation';
 
 import type { NavigatorContentProps } from '../../../standard-navigation/types';
+import { useNonStackAnchorWarning } from '../../../standard-navigation/useNonStackAnchorWarning';
 import { usePreloadPlaceholderRoutes } from '../../../standard-navigation/usePreloadPlaceholderRoutes';
 import { useVisibleTabsWithRedirect } from '../../../standard-navigation/useVisibleTabsWithRedirect';
 import type { ParamListBase, TabNavigationState, TabRouterOptions } from '../../native';
@@ -47,6 +48,7 @@ function MaterialTopTabNavigatorContent({
   navigateToTabSync,
   ...rest
 }: ContentArgs) {
+  useNonStackAnchorWarning();
   const { visibleRoutes, focusedIndex, focusedFallbackRoute } = useVisibleTabsWithRedirect({
     routes: state.routes,
     routeNames,
